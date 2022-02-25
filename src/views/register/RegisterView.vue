@@ -7,7 +7,7 @@
             <b-form-group id="input-group-1">
               <b-form-input
                 id="input-1"
-                v-model="user.email"
+                v-model="$v.user.Email.$model"
                 type="email"
                 placeholder="Enter email"
                 required
@@ -17,27 +17,26 @@
             <b-form-group id="input-group-2">
               <b-form-input
                 id="input-2"
-                v-model="user.name"
+                v-model="$v.user.Name.$model"
                 placeholder="Enter name"
                 required
               ></b-form-input>
+              <b-form-invalid-feedback :state="validateState('Name')">
+                ID必须为 6 位及以上
+              </b-form-invalid-feedback>
             </b-form-group>
 
             <b-form-group id="input-group-3">
               <b-form-input
                 id="input-3"
-                v-model="user.password"
+                v-model="$v.user.Password.$model"
                 type="password"
                 placeholder="Enter password"
                 required
               ></b-form-input>
-              <b-form-text
-                id="password-help-block"
-                text-variant="danger"
-                v-if="showPasswordValidate"
-              >
-                密码必须为六位及以上
-              </b-form-text>
+              <b-form-invalid-feedback :state="validateState('Password')">
+                密码必须为 6 位及以上
+              </b-form-invalid-feedback>
             </b-form-group>
             <b-button @click="onSubmit" variant="outline-primary"
               >Submit</b-button
@@ -50,24 +49,64 @@
 </template>
 
 <script>
+import { required, minLength, maxLength } from 'vuelidate/lib/validators';
+import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
       user: {
-        email: '',
-        name: '',
-        password: '',
+        Email: '',
+        Name: '',
+        Password: '',
       },
       showPasswordValidate: false,
     };
   },
+  validations: {
+    user: {
+      Email: {
+        required,
+        minLength: minLength(3),
+        maxLength: maxLength(50),
+      },
+      Name: {
+        required,
+        minLength: minLength(3),
+        maxLength: maxLength(25),
+      },
+      Password: {
+        required,
+        minLength: minLength(6),
+      },
+    },
+  },
   methods: {
+    ...mapActions('userModule', { userRegister: 'login' }),
+    validateState(Name) {
+      const { $dirty, $error } = this.$v.user[Name];
+      return $dirty ? !$error : null;
+    },
     onSubmit() {
-      if (this.user.password < 6) {
-        this.showPasswordValidate = true;
+      this.$v.user.$touch();
+      if (this.$v.user.$anyError) {
         return;
       }
-      console.log(this.user.password);
+      console.log(process.env.VUE_APP_BASE_API);
+      // 请求
+      this.$store.dispatch('userModule/register', this.user).then(() => {
+        this.$router.replace({ name: 'home' });
+      }).catch((err) => {
+        this.makeToast('提示', err.response.data.msg, 'danger', false);
+      });
+    },
+    makeToast(title, err, variant = null, append = false) {
+      this.$bvToast.toast(err, {
+        title,
+        variant,
+        autoHideDelay: 5000,
+        appendToast: append,
+      });
     },
   },
 };

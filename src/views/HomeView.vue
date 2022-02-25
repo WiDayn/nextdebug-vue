@@ -1,24 +1,57 @@
 <template>
-  <div class="home">
-    <div>
-      <b-button>Button</b-button>
-      <b-button variant="danger">Button</b-button>
-      <b-button variant="success">Button</b-button>
-      <b-button variant="outline-primary">Button</b-button>
-    </div>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <b-table :items="problems" :fields="fields" striped responsive="sm">
+      <template #cell(id)="data">
+        {{ data.value }}
+      </template>
+      <template #cell(nameid)="data">
+        <a v-bind:href="'http://localhost:8080/problem/' + data.item.id">{{
+          data.item.name
+        }}</a>
+      </template>
+      <template #cell(from)="data">
+        <b-badge variant="primary">{{ data.value }}</b-badge>
+      </template>
+      <template #cell(op)="data">
+        {{ data.value }}
+      </template>
+    </b-table>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld,
+  res: '',
+  data() {
+    return {
+      queryconfig: {
+        type: 'id',
+        form: 1,
+        to: 50,
+      },
+      problems: [],
+      fields: [
+        { key: 'id', label: '题号', thStyle: 'width: 15%' },
+        { key: 'nameid', label: '题目名称', thStyle: 'width: 55%' },
+        { key: 'from', label: '标签', thStyle: 'width:15%' },
+        { key: 'op', label: '操作', thStyle: 'width: 15%' },
+      ],
+    };
+  },
+  mounted() {
+    this.onLoad();
+  },
+  methods: {
+    ...mapActions('problemModule', { sortProblem: 'sort' }),
+    ...mapActions('onlineJudgeModule', { sortOnlineJudge: 'sort' }),
+    onLoad() {
+      this.$store.dispatch('problemModule/sort', this.queryconfig).then((res) => {
+        this.problems = res.data.data.problems;
+      });
+    },
   },
 };
 </script>
