@@ -1,14 +1,22 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar
+      toggleable="lg"
+      type="dark"
+      variant="info"
+    >
       <b-container>
-        <b-navbar-brand @click="$router.push({ name: 'home' })"
-          >DEBUG.PINK</b-navbar-brand
-        >
+        <b-navbar-brand
+          href="javascript:void(0);"
+          @click="$router.push({ name: 'home' })"
+        >DEBUG.PINK</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-        <b-collapse id="nav-collapse" is-nav>
+        <b-collapse
+          id="nav-collapse"
+          is-nav
+        >
           <b-navbar-nav class="ml-auto">
             <!-- <b-nav-form>
                 <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
@@ -24,13 +32,11 @@
             <b-nav-item
               @click="$router.replace({ name: 'login' })"
               v-if="!userInfo"
-              >登录</b-nav-item
-            >
+            >登录</b-nav-item>
             <b-nav-item
               @click="$router.replace({ name: 'register' })"
               v-if="!userInfo"
-              >注册</b-nav-item
-            >
+            >注册</b-nav-item>
             <b-avatar
               variant="info"
               v-bind:src="
@@ -38,10 +44,17 @@
               "
               v-if="userInfo"
             ></b-avatar>
-            <b-nav-item-dropdown right v-if="userInfo">
-              <b-dropdown-item @click="$router.push({ name: 'profile' })"
-                >个人主页</b-dropdown-item
-              >
+            <b-nav-item-dropdown
+              right
+              v-if="userInfo"
+            >
+              <strong>
+                <b-dropdown-text style="font-weight: bolder">{{
+                  userInfo.nick_name
+                }}</b-dropdown-text>
+              </strong>
+              <b-dropdown-divider></b-dropdown-divider>
+              <b-dropdown-item @click="$router.push({ name: 'profile' })">个人主页</b-dropdown-item>
               <b-dropdown-item @click="logout">登出</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>

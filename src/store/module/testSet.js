@@ -1,11 +1,11 @@
-import problemService from '@/service/problemService';
+import testSetService from '@/service/testSetService';
 
-const problemModule = {
+const testSetModule = {
   namespaced: true,
   actions: {
-    sort(context, { type, from, to }) {
+    sort(context, { id }) {
       return new Promise((resolve, reject) => {
-        problemService.sort({ type, from, to }).then((res) => {
+        testSetService.sort({ id }).then((res) => {
           resolve(res);
         }).catch((err) => {
           reject(err);
@@ -14,7 +14,7 @@ const problemModule = {
     },
     get(context, { id }) {
       return new Promise((resolve, reject) => {
-        problemService.get({ id }).then((res) => {
+        testSetService.get({ id }).then((res) => {
           resolve(res);
         }).catch((err) => {
           reject(err);
@@ -22,11 +22,11 @@ const problemModule = {
       });
     },
     create(context, {
-      name, from, problemLink, description,
+      ProblemID, Uploader, Input, Output,
     }) {
       return new Promise((resolve, reject) => {
-        problemService.create({
-          name, from, problemLink, description,
+        testSetService.create({
+          ProblemID, Uploader, Input, Output,
         }).then((res) => {
           resolve(res);
         }).catch((err) => {
@@ -37,4 +37,4 @@ const problemModule = {
   },
 };
 
-export default problemModule;
+export default testSetModule;

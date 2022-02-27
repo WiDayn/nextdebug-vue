@@ -13,10 +13,13 @@
     </div>
     <div style="text-align: center">
       <h3>
-        你好, <span v-if="userInfo">{{ userInfo.nick_name }}</span>
+        <span v-if="userInfo">{{ userInfo.nick_name }}</span>
       </h3>
     </div>
-    <b-modal id="modal-1" title="修改头像">
+    <b-modal
+      id="modal-1"
+      title="修改头像"
+    >
       <div style="width: 100%; height: 500px">
         <vue-cropper
           autoCrop
@@ -38,23 +41,22 @@
           class="mb-2"
           offset-md="2"
         ></b-form-file>
-        <b-button @click="(file = null), (option.img = '')" class="m-1"
-          >清空上传</b-button
-        >
+        <b-button
+          @click="(file = null), (option.img = '')"
+          class="m-1"
+        >清空上传</b-button>
         <b-button
           v-if="option.img == ''"
           @click="onUpload"
           variant="primary"
           class="m-1"
-          >上传图片</b-button
-        >
+        >上传图片</b-button>
         <b-button
           v-if="!option.img == ''"
           @click="onCutDone"
           variant="primary"
           class="m-1"
-          >完成裁剪</b-button
-        >
+        >完成裁剪</b-button>
       </div>
     </b-modal>
   </div>

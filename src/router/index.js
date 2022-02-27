@@ -18,6 +18,11 @@ const routes = [
     component: () => import('../views/AboutView.vue'),
   },
   {
+    path: '/problem/create',
+    name: 'problem_create',
+    component: () => import('../views/problem/ProblemCreateView.vue'),
+  },
+  {
     path: '/problem/:id',
     name: 'problem',
     component: () => import('../views/problem/ProblemDetailView.vue'),

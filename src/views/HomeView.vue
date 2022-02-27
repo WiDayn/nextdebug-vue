@@ -1,11 +1,29 @@
 <template>
   <div>
-    <b-table :items="problems" :fields="fields" striped responsive="sm">
+    <div
+      style="margin: 5px"
+      class="text-right"
+    >
+      <b-button
+        variant="primary"
+        @click="$router.push({ name: 'problem_create' })"
+      >添加题目</b-button>
+    </div>
+    <b-table
+      :items="problems"
+      :fields="fields"
+      striped
+      responsive="sm"
+    >
       <template #cell(id)="data">
         {{ data.value }}
       </template>
       <template #cell(nameid)="data">
-        <a v-bind:href="'http://localhost:8080/problem/' + data.item.id">{{
+        <a
+          href="javascript:void(0);"
+          @click="$router.push({ name: 'problem',params:{id:data.item.id}})"
+          @keyup="$router.push({ name: 'problem',params:{id:data.item.id}})"
+        >{{
           data.item.name
         }}</a>
       </template>

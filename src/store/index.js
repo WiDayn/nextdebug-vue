@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import userModule from './module/user';
 import problemModule from './module/problem';
 import onlineJudgeModule from './module/onlineJudge';
+import testSetModule from './module/testSet';
 
 Vue.use(Vuex);
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+    testSetModule,
     problemModule,
     userModule,
     onlineJudgeModule,
