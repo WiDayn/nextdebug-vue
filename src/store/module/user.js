@@ -1,6 +1,6 @@
 import storageService from '@/service/storageService';
 import userService from '@/service/userService';
-import uploadService from '@/service/uploadService';
+import UploadService from '@/service/uploadService';
 
 const userModule = {
   namespaced: true,
@@ -64,8 +64,7 @@ const userModule = {
     },
     uploadavatar(contexts, { context }) {
       return new Promise((resolve, reject) => {
-        uploadService.uploadavatar({ context }).then((res) => {
-          console.log(res.data.data.user);
+        UploadService.uploadavatar({ context }).then((res) => {
           contexts.commit('SET_USERINFO', res.data.data.user); // 注意这里的是contexts
           resolve(res);
           // 成功后刷新页面

@@ -106,7 +106,6 @@ export default {
         this.avatar.context = data;
         this.$store.dispatch('userModule/uploadavatar', this.avatar).then(() => {
           this.makeToast('提示', '上传成功', 'success', false);
-          console.log('上传成功');
         }).catch((err) => {
           this.makeToast('提示', err.response.data.msg, 'danger', false);
         });

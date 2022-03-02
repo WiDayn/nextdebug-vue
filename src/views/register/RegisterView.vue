@@ -1,7 +1,12 @@
 <template>
   <div class="register">
     <b-row class="mt-5">
-      <b-col md="8" offset-md="2" lg="6" offset-lg="3">
+      <b-col
+        md="8"
+        offset-md="2"
+        lg="6"
+        offset-lg="3"
+      >
         <b-card title="注册">
           <b-form>
             <b-form-group id="input-group-1">
@@ -38,9 +43,10 @@
                 密码必须为 6 位及以上
               </b-form-invalid-feedback>
             </b-form-group>
-            <b-button @click="onSubmit" variant="outline-primary"
-              >Submit</b-button
-            >
+            <b-button
+              @click="onSubmit"
+              variant="outline-primary"
+            >Submit</b-button>
           </b-form>
         </b-card>
       </b-col>
@@ -92,7 +98,6 @@ export default {
       if (this.$v.user.$anyError) {
         return;
       }
-      console.log(process.env.VUE_APP_BASE_API);
       // 请求
       this.$store.dispatch('userModule/register', this.user).then(() => {
         this.$router.replace({ name: 'home' });

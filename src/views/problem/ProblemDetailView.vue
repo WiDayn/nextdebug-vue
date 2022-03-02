@@ -132,7 +132,6 @@ export default {
       });
       this.$store.dispatch('testSetModule/sort', this.queryConfig).then((resp) => {
         this.testSet = resp.data.data.test_set;
-        console.log(this.testSet[0]);
       });
     },
     makeToast(title, err, variant = null, append = false) {
