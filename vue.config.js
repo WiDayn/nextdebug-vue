@@ -1,4 +1,9 @@
 const { defineConfig } = require('@vue/cli-service');
+const path = require('path');
+
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -14,5 +19,15 @@ module.exports = defineConfig({
         return assetFilename.endsWith('.js');
       },
     },
+  },
+  chainWebpack: (config) => {
+    config.resolve.alias
+      .set('@$', resolve('src'))
+      .set('service', resolve('src/service'))
+      .set('store', resolve('src/store'))
+      .set('layout', resolve('src/layout'))
+      .set('utils', resolve('src/utils'))
+      .set('views', resolve('src/views'))
+      .set('router', resolve('src/router'));
   },
 });
