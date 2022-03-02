@@ -31,8 +31,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  // 正式部署时启用
-  // mode: 'history',
+  mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });
