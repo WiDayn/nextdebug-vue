@@ -24,5 +24,12 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx', '.mjs', '.cjs', '.ts', '.tsx'],
+        },
+      },
+    },
   },
 };
