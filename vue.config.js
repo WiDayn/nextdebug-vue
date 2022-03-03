@@ -22,12 +22,6 @@ module.exports = defineConfig({
   },
   chainWebpack: (config) => {
     config.resolve.alias
-      .set('@$', resolve('src'))
-      .set('service', resolve('src/service'))
-      .set('store', resolve('src/store'))
-      .set('layout', resolve('src/layout'))
-      .set('utils', resolve('src/utils'))
-      .set('views', resolve('src/views'))
-      .set('router', resolve('src/router'));
+      .set('@', resolve('src'));
   },
 });
