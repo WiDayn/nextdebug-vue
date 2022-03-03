@@ -16,4 +16,15 @@ module.exports = {
     config.resolve.alias
       .set('@', path.join(__dirname, 'src'));
   },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        pathRewrite: {
+          '/api': '',
+        },
+      },
+    },
+  },
 };
