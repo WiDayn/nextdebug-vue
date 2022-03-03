@@ -40,7 +40,7 @@
             <b-avatar
               variant="info"
               v-bind:src="
-                'http://localhost:1016/api/avatar?src=' + userInfo.avatar
+                baseurl +'avatar?src=' + userInfo.avatar
               "
               v-if="userInfo"
             ></b-avatar>
@@ -68,6 +68,11 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
+  data() {
+    return {
+      baseurl: process.env.VUE_APP_BASE_API,
+    };
+  },
   computed: mapState({
     userInfo: (state) => state.userModule.userInfo,
   }),

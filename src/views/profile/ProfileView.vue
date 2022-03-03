@@ -5,7 +5,7 @@
         <b-img
           thumbnail
           fluid
-          v-bind:src="'http://localhost:1016/api/avatar?src=' + userInfo.avatar"
+          v-bind:src="baseurl +'avatar?src=' + userInfo.avatar"
           width="200"
         ></b-img>
       </b-col>
@@ -69,6 +69,7 @@ import { VueCropper } from 'vue-cropper';
 export default {
   data() {
     return {
+      baseurl: process.env.VUE_APP_BASE_API,
       option: {
         img: '',
         size: 1,
