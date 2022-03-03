@@ -1,6 +1,6 @@
-import storageService from '../../service/storageService';
-import userService from '../../service/userService';
-import uploadService from '../../service/uploadService';
+import storageService from '@/service/storageService';
+import userService from '@/service/userService';
+import uploadService from '@/service/uploadService';
 
 const userModule = {
   namespaced: true,
