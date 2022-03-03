@@ -2984,6 +2984,15 @@ eslint-import-resolver-alias@^1.1.2:
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-alias/-/eslint-import-resolver-alias-1.1.2.tgz#297062890e31e4d6651eb5eba9534e1f6e68fc97"
   integrity sha512-WdviM1Eu834zsfjHtcGHtGfcu+F30Od3V7I9Fi57uhBEwPkjDcii7/yW8jAT+gOhn4P/vOxxNAXbFAKsrrc15w==
 
+eslint-import-resolver-jsconfig@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-jsconfig/-/eslint-import-resolver-jsconfig-1.1.0.tgz#7e2ea0868205fff33fd1d9ed79642cdeaa1e42df"
+  integrity sha512-MEiD/zyEkVVwnblRI058/0liYrKXMUwgAtM4EKrTldrThb1AvgPIQeR4emDKC2IotTuWF7KzekvGP+KLhtM3rw==
+  dependencies:
+    find-root "^1.1.0"
+    glob-parent "^6.0.1"
+    resolve "^1.20.0"
+
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"
   resolved "https://registry.npmmirror.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.6.tgz#4048b958395da89668252001dbd9eca6b83bacbd"
