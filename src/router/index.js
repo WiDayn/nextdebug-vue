@@ -20,6 +20,9 @@ const routes = [
   {
     path: '/problem/create',
     name: 'problem_create',
+    meta: {
+      auth: true,
+    },
     component: () => import('../views/problem/ProblemCreateView.vue'),
   },
   {

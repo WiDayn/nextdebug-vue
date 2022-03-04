@@ -74,6 +74,15 @@ const userModule = {
         });
       });
     },
+    userDetail(context, { ID }) {
+      return new Promise((resolve, reject) => {
+        userService.userDetail({ ID }).then((res) => {
+          resolve(res);
+        }).catch((err) => {
+          reject(err);
+        });
+      });
+    },
   },
 };
 

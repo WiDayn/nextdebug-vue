@@ -54,7 +54,11 @@
                 }}</b-dropdown-text>
               </strong>
               <b-dropdown-divider></b-dropdown-divider>
-              <b-dropdown-item @click="$router.push({ name: 'profile' })">个人主页</b-dropdown-item>
+              <b-dropdown-item @click="$router.push({
+                name: 'userDetail',
+                params:{ id:userInfo.id }})">
+                个人主页</b-dropdown-item>
+              <b-dropdown-item @click="$router.push({ name: 'profile' })">设置</b-dropdown-item>
               <b-dropdown-item @click="logout">登出</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
