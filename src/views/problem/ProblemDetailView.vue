@@ -36,15 +36,15 @@
                   <template #cell(uploader)="data">
                     <a
                       href="javascript:void(0);"
-                      @click="$router.push({ name: 'problem',params:{id:data.item.id}})"
-                      @keyup="$router.push({ name: 'problem',params:{id:data.item.id}})"
+                      @click="$router.push({ name: 'userDetail',params:{id:data.item.uploader_id}})"
+                      @keyup="$router.push({ name: 'userDetail',params:{id:data.item.uploader_id}})"
                     >{{ data.value }}</a>
                   </template>
                   <template #cell(votes)="data">
                     <a
                       href="javascript:void(0);"
-                      @click="$router.push({ name: 'problem',params:{id:data.item.id}})"
-                      @keyup="$router.push({ name: 'problem',params:{id:data.item.id}})"
+                      @click="$router.push({ name: 'userDetail',params:{id:data.item.id}})"
+                      @keyup="$router.push({ name: 'userDetail',params:{id:data.item.id}})"
                     >{{ data.value }}</a>
                   </template>
                   <template #cell(created_at)="data">

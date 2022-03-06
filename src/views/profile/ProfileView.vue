@@ -1,21 +1,36 @@
 <template>
   <div>
     <div style="text-align: center">
-      <b-col>
-        <b-img
-          thumbnail
-          fluid
-          v-bind:src="baseurl +'avatar?src=' + userInfo.avatar"
-          width="200"
-        ></b-img>
-      </b-col>
-      <b-button v-b-modal.modal-1>修改头像</b-button>
-    </div>
-    <div style="text-align: center">
       <h3>
         <span v-if="userInfo">{{ userInfo.nick_name }}</span>
       </h3>
     </div>
+    <b-card>
+      <b-row>
+        <div class="col-3">
+          <b-list-group>
+            <b-list-group-item active>基本设置</b-list-group-item>
+            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
+            <b-list-group-item>Morbi leo risus</b-list-group-item>
+            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
+            <b-list-group-item>Vestibulum at eros</b-list-group-item>
+          </b-list-group>
+        </div>
+        <div class="col-7">
+          <div style="text-align: center">
+            <b-col>
+              <b-img
+                thumbnail
+                fluid
+                v-bind:src="baseurl +'avatar?src=' + userInfo.avatar"
+                width="200"
+              ></b-img>
+            </b-col>
+            <b-button v-b-modal.modal-1>修改头像</b-button>
+          </div>
+        </div>
+      </b-row>
+    </b-card>
     <b-modal
       id="modal-1"
       title="修改头像"
