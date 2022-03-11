@@ -1,2 +1,18 @@
 @import '~bootstrap';
 @import '~bootstrap-vue';
+
+.top-NavBar{
+    font-family: Space Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.nd-input{
+    outline: none;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+.nd-input-df-warp{
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.5);
+}
+.nd-input-df-warp:hover{
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.7);
+}

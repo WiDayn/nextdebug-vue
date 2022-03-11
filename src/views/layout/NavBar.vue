@@ -2,21 +2,26 @@
   <div>
     <b-navbar
       toggleable="lg"
-      type="dark"
-      variant="info"
+      type="light"
+      variant="default"
+      class="top-NavBar"
     >
       <b-container>
         <b-navbar-brand
           href="javascript:void(0);"
           @click="$router.push({ name: 'home' })"
-          style="position: fixed"
-        >DEBUG.PINK</b-navbar-brand>
+        >nextDebug</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse
           id="nav-collapse"
           is-nav
         >
+          <b-navbar-nav class="mr-auto">
+            <b-nav-item @click="$router.replace({ name: 'home' })"
+            >develop</b-nav-item>
+
+          </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <!-- <b-nav-item-dropdown text="Lang" right>
                 <b-dropdown-item href="#">EN</b-dropdown-item>
@@ -24,14 +29,44 @@
                 <b-dropdown-item href="#">RU</b-dropdown-item>
                 <b-dropdown-item href="#">FA</b-dropdown-item>
                 </b-nav-item-dropdown> -->
-            <b-nav-item
+            <!-- <b-nav-item
               @click="$router.replace({ name: 'login' })"
               v-if="!userInfo"
-            >登录</b-nav-item>
+            >login</b-nav-item>
             <b-nav-item
               @click="$router.replace({ name: 'register' })"
               v-if="!userInfo"
-            >注册</b-nav-item>
+            >register</b-nav-item> -->
+            <!-- <b-nav-item>
+              <form class="form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  >
+                </div>
+              </form>
+            </b-nav-item> -->
+            <b-nav-item>
+              <div class="input-group">
+                <span>@</span>
+                <div class="nd-input-df-warp">
+                  <input
+                    type="text"
+                    class="nd-input"
+                    aria-label="Username"
+                    placeholder="username"
+                    style="width: 7em;"
+                  >
+                </div>
+              </div>
+            </b-nav-item>
             <b-avatar
               variant="info"
               v-bind:src="
