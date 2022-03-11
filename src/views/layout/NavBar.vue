@@ -18,8 +18,7 @@
           is-nav
         >
           <b-navbar-nav class="mr-auto">
-            <b-nav-item @click="$router.replace({ name: 'home' })"
-            >develop</b-nav-item>
+            <b-nav-item @click="$router.replace({ name: 'home' })">develop</b-nav-item>
 
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
@@ -56,7 +55,10 @@
             <b-nav-item>
               <div class="input-group">
                 <span>@</span>
-                <div class="nd-input-df-warp">
+                <div
+                  class="nd-input-df-warp"
+                  v-if="!userInfo"
+                >
                   <input
                     type="text"
                     class="nd-input"
@@ -65,16 +67,24 @@
                     style="width: 7em;"
                   >
                 </div>
+                <div
+                  style="width: 7em;"
+                  v-if="userInfo"
+                >
+                  {{
+                  userInfo.nick_name
+                }}
+                </div>
               </div>
             </b-nav-item>
-            <b-avatar
+            <!-- <b-avatar
               variant="info"
               v-bind:src="
                 baseurl +'avatar?src=' + userInfo.avatar
               "
               v-if="userInfo"
-            ></b-avatar>
-            <b-nav-item-dropdown
+            ></b-avatar> -->
+            <!-- <b-nav-item-dropdown
               right
               v-if="userInfo"
             >
@@ -90,7 +100,7 @@
                 个人主页</b-dropdown-item>
               <b-dropdown-item @click="$router.push({ name: 'profile' })">设置</b-dropdown-item>
               <b-dropdown-item @click="logout">登出</b-dropdown-item>
-            </b-nav-item-dropdown>
+            </b-nav-item-dropdown> -->
           </b-navbar-nav>
         </b-collapse>
       </b-container>
