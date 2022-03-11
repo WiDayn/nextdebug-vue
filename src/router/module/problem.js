@@ -9,8 +9,13 @@ const problemRoutes = [
   },
   {
     path: '/problem/:id',
-    name: 'problem',
+    name: 'problem_detail',
     component: () => import('@/views/problem/ProblemDetailView.vue'),
+  },
+  {
+    path: '/problem',
+    name: 'problem_list',
+    component: () => import('@/views/problem/ProblemListView.vue'),
   },
 ];
 
