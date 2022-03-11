@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from '@/store';
-import HomeView from '../views/HomeView.vue';
 import userRoutes from './module/user';
+import problemRoutes from './module/problem';
 
 Vue.use(VueRouter);
 
@@ -10,26 +10,14 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: () => import('@/views/HomeView.vue'),
   },
   {
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutView.vue'),
   },
-  {
-    path: '/problem/create',
-    name: 'problem_create',
-    meta: {
-      auth: true,
-    },
-    component: () => import('../views/problem/ProblemCreateView.vue'),
-  },
-  {
-    path: '/problem/:id',
-    name: 'problem',
-    component: () => import('../views/problem/ProblemDetailView.vue'),
-  },
+  ...problemRoutes,
   ...userRoutes,
 ];
 
