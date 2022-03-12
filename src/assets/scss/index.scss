@@ -2,7 +2,16 @@
 @import '~bootstrap-vue';
 
 .top-NavBar{
-    font-family: Space Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    
+}
+
+#code-font{
+    font-family: 'Fira Code', Space Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.bottom-NavBar{
+    font-size: 7px;
+    color:rgba(0, 0, 0, 0.3)
 }
 
 .nd-input{
@@ -15,4 +24,15 @@
 }
 .nd-input-df-warp:hover{
     border-bottom: 1.5px solid rgba(0, 0, 0, 0.7);
+}
+
+.nd-nav-item-selected>a:before{
+    z-index: -1;
+    position: absolute;
+    height: 10px;
+    width: 4em;
+    bottom: 20px;
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 0, var(--tw-bg-opacity));
+    content: "";
 }

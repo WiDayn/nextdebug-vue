@@ -35,6 +35,7 @@ export default {
   },
 };
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css">
 <link data-n-head="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&amp;Space+Mono:wght@400&amp;family=Epilogue:wght@200;400;700&amp;display=swap">
 <style lang="scss">
 </style>

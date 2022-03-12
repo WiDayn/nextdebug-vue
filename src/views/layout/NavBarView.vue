@@ -5,6 +5,7 @@
       type="light"
       variant="default"
       class="top-NavBar"
+      id="code-font"
     >
       <b-container>
         <b-navbar-brand
@@ -18,8 +19,18 @@
           is-nav
         >
           <b-navbar-nav class="mr-auto">
-            <b-nav-item @click="$router.replace({ name: 'home' })">develop</b-nav-item>
-
+            <b-nav-item
+              @click="$router.replace({ name: 'home' })"
+              class="nd-nav-item nd-nav-item-selected"
+            >problem</b-nav-item>
+            <b-nav-item
+              @click="$router.replace({ name: 'home' })"
+              class="nd-nav-item"
+            >develop</b-nav-item>
+            <b-nav-item
+              @click="$router.replace({ name: 'home' })"
+              class="nd-nav-item"
+            >debug</b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <!-- <b-nav-item-dropdown text="Lang" right>
