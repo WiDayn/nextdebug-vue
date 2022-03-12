@@ -5,6 +5,10 @@
     font-family: 'Fira Code', Space Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.top-NavBar{
+    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.1);
+}
+
 .bottom-NavBar{
     font-size: 7px;
     color:rgba(0, 0, 0, 0.3)
@@ -30,5 +34,26 @@
     bottom: 20px;
     background-color: rgba(255, 255, 0, 1);
     content: "";
+}
+
+.nd-breadcrumb-df>ol{
+    // position: absolute;
+    margin-left: 22em;
+    margin-right: 22em;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.nd-breadcrumb-df{
+    height: 3em;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.1);
+}
+
+.nd-link-df{
+    color:rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+.nd-link-df:hover{
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
 }
 

@@ -116,6 +116,17 @@
         </b-collapse>
       </b-container>
     </b-navbar>
+    <nav
+      aria-label="breadcrumb"
+      class="nd-breadcrumb-df"
+      id="code-font"
+    >
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#" class="nd-link-df">home</a></li>
+        <li class="breadcrumb-item"><a href="#" class="nd-link-df">problem list</a></li>
+        <li class="breadcrumb-item active" aria-current="page">(current)</li>
+      </ol>
+    </nav>
   </div>
 </template>
 
