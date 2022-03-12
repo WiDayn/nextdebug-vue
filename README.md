@@ -1,24 +1,14 @@
-# nextdebug
+<h1 align="center">nextDebug-vue</h1>
 
-## Project setup
-```
-yarn install
-```
+<p align="center"> <img src="https://img.shields.io/badge/基于-VuePress-brightgreen?style=for-the-badge&logo=vue.js"/> <img src="https://img.shields.io/badge/协议-CC_BY--NC--ND_4.0-blue?style=for-the-badge&logo=creativecommons"/></p>
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
 
-### Compiles and minifies for production
-```
-yarn build
-```
 
-### Lints and fixes files
-```
-yarn lint
-```
+**##** **简单介绍**
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+DEBUG.PINK的前端代码储存库，基于 Vue + Bootstrap-Vue 
+
+不同的代码分支对应不同的版本，不是所有的内容都会最终作用于网站上。
+
+目前仍在起步阶段，大量功能有待完善
+
