@@ -25,13 +25,16 @@
 .nd-input-df-warp:hover{
     border-bottom: 1.5px solid rgba(0, 0, 0, 0.7);
 }
-
+.nd-nav-item-selected{
+    position: relative;
+}
 .nd-nav-item-selected>a:before{
     z-index: -1;
     position: absolute;
     height: 10px;
     width: 4em;
-    bottom: 20px;
+    bottom: 10px;
+    margin-left: 0.3em;
     background-color: rgba(255, 255, 0, 1);
     content: "";
 }
@@ -57,3 +60,27 @@
     text-decoration: none;
 }
 
+.gap{
+    width: 100em;
+    height: 2em;
+}
+.nd-left-nav-item-selected{
+    position: relative;
+}
+.nd-left-nav-item-selected::before{
+    z-index: -1;
+    position: absolute;
+    height: 0.8em;
+    margin-left: 0.3em;
+    width: 8em;
+    bottom: 0.2em;
+    background-color: rgba(255, 255, 0, 1);
+    content: "";
+}
+.nd-left-nav-item{
+    height: 2em;
+    color: rgba(0, 0, 0, 0.5);
+}
+.nd-left-nav-item:hover{
+    color: rgba(0, 0, 0, 0.7);
+}
