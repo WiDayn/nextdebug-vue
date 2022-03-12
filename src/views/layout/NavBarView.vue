@@ -63,7 +63,7 @@
                 </div>
               </form>
             </b-nav-item> -->
-            <b-nav-item>
+            <b-nav-item class="nav-username">
               <div class="input-group">
                 <span>@</span>
                 <div
