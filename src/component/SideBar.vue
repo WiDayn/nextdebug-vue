@@ -6,11 +6,7 @@
     aria-orientation="vertical"
     style="flex-direction: column;"
   >
-    <li
-      v-for="(value, key) in treeMenus"
-      :key="key"
-      style="list-style: none;"
-    >
+    <li style="list-style: none;">
       <a
         class="nav-link nd-left-nav-item"
         :class="father + treeMenus.name == nowSelect ? 'nd-left-nav-item-selected' : ''"
@@ -22,24 +18,28 @@
         :style="'margin-left:'+level * 5+'px'"
         :aria-selected="true"
         @click="click(father, treeMenus.name)"
-        v-if="typeof value != 'object'"
       >
         <template v-if="treeMenus.children != null && treeMenus.children.length != 0">
           <template v-if="visible">
-            {{value + "↗"}}
+            {{treeMenus.name + "↘"}}
           </template>
           <template v-else>
-            {{value + "↘"}}
+            {{treeMenus.name + "↗"}}
           </template>
         </template>
-        <p v-else>{{value}}</p>
+        <p v-else>{{ treeMenus.name }}</p>
       </a>
-      <sideBar
-        v-if="visible && (typeof value) == 'object'"
-        :treeMenus="value"
-        :level="nextLevel"
-        :father="father + treeMenus.name"
-      ></sideBar>
+      <template v-if="visible && treeMenus.children != null">
+        <template v-for="(value, key) in treeMenus.children">
+          <sideBar
+            :key="key"
+            :treeMenus="value"
+            :level="nextLevel"
+            :father="father + treeMenus.name"
+          >
+          </sideBar>
+        </template>
+      </template>
     </li>
   </ul>
 </template>
@@ -51,7 +51,7 @@ export default ({
   data() {
     return {
       nextLevel: this.level + 1,
-      visible: true,
+      visible: false,
     };
   },
   props: {
@@ -76,6 +76,7 @@ export default ({
     click(father, value) {
       this.visible = !this.visible;
       this.$store.dispatch('treeMenusModule/update', { newSelect: father + value });
+      this.$forceUpdate();
     },
   },
 });
