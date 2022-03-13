@@ -4,6 +4,7 @@ import userModule from './module/user';
 import problemModule from './module/problem';
 import onlineJudgeModule from './module/onlineJudge';
 import testSetModule from './module/testSet';
+import treeMenusModule from './module/treeMenus';
 
 Vue.use(Vuex);
 
@@ -22,5 +23,6 @@ export default new Vuex.Store({
     problemModule,
     userModule,
     onlineJudgeModule,
+    treeMenusModule,
   },
 });
