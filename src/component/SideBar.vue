@@ -13,7 +13,7 @@
     >
       <a
         class="nav-link nd-left-nav-item"
-        :class="value == nowSelect ? 'nd-left-nav-item-selected' : ''"
+        :class="father + treeMenus.name == nowSelect ? 'nd-left-nav-item-selected' : ''"
         id="v-pills-home-tab"
         data-toggle="pill"
         href="#v-pills-home"
@@ -21,13 +21,17 @@
         aria-controls="v-pills-home"
         :style="'margin-left:'+level * 5+'px'"
         :aria-selected="true"
-        @click="click(value)"
+        @click="click(father, treeMenus.name)"
         v-if="typeof value != 'object'"
-      >{{value}}</a>
+      >
+        <p v-if="treeMenus.children != null && treeMenus.children.length != 0">{{value + "↗"}}</p>
+        <p v-else>{{value}}</p>
+      </a>
       <sideBar
         v-if="typeof value == 'object'"
         :treeMenus="value"
         :level="nextLevel"
+        :father="father + treeMenus.name"
       ></sideBar>
     </li>
   </ul>
@@ -50,6 +54,9 @@ export default ({
     level: {
       type: Number,
     },
+    father: {
+      type: String,
+    },
   },
   computed: mapState({
     nowSelect: (state) => state.treeMenusModule.sideBarNowSelect,
@@ -58,8 +65,8 @@ export default ({
   },
   methods: {
     ...mapActions('treeMenusModule', { update: 'update' }),
-    click(value) {
-      this.$store.dispatch('treeMenusModule/update', { newSelect: value });
+    click(father, value) {
+      this.$store.dispatch('treeMenusModule/update', { newSelect: father + value });
     },
   },
 });

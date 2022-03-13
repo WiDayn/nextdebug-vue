@@ -14,15 +14,33 @@
 </template>
 
 <script>
-const treeMenusData = { // 数据格式
+const treeMenusData = {
   name: 'Base',
   children: [
     {
       name: 'Home',
       children: [
+      ],
+    },
+    {
+      name: 'Profile',
+      children: [
         {
-          name: 'Profile',
+          name: 'Detail',
         },
+      ],
+    },
+    {
+      name: 'Messages',
+      children: [
+        {
+          name: 'Detail',
+        },
+      ],
+    },
+    {
+      name: 'Settings',
+      children: [
       ],
     },
   ],
