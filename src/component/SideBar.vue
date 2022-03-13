@@ -24,11 +24,18 @@
         @click="click(father, treeMenus.name)"
         v-if="typeof value != 'object'"
       >
-        <p v-if="treeMenus.children != null && treeMenus.children.length != 0">{{value + "↗"}}</p>
+        <template v-if="treeMenus.children != null && treeMenus.children.length != 0">
+          <template v-if="visible">
+            {{value + "↗"}}
+          </template>
+          <template v-else>
+            {{value + "↘"}}
+          </template>
+        </template>
         <p v-else>{{value}}</p>
       </a>
       <sideBar
-        v-if="typeof value == 'object'"
+        v-if="visible && (typeof value) == 'object'"
         :treeMenus="value"
         :level="nextLevel"
         :father="father + treeMenus.name"
@@ -44,6 +51,7 @@ export default ({
   data() {
     return {
       nextLevel: this.level + 1,
+      visible: true,
     };
   },
   props: {
@@ -66,6 +74,7 @@ export default ({
   methods: {
     ...mapActions('treeMenusModule', { update: 'update' }),
     click(father, value) {
+      this.visible = !this.visible;
       this.$store.dispatch('treeMenusModule/update', { newSelect: father + value });
     },
   },
