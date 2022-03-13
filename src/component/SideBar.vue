@@ -76,7 +76,6 @@ export default ({
     click(father, value) {
       this.visible = !this.visible;
       this.$store.dispatch('treeMenusModule/update', { newSelect: father + value });
-      this.$forceUpdate();
     },
   },
 });
