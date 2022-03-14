@@ -21,10 +21,12 @@
       >
         <template v-if="treeMenus.children != null && treeMenus.children.length != 0">
           <template v-if="visible">
-            {{treeMenus.name + "↘"}}
+            {{treeMenus.name}}
+            <span class="nd-breadcrumb-dropdown">↘</span>
           </template>
           <template v-else>
-            {{treeMenus.name + "↗"}}
+            {{treeMenus.name}}
+            <span class="nd-breadcrumb-dropdown">↗</span>
           </template>
         </template>
         <p v-else>{{ treeMenus.name }}</p>
