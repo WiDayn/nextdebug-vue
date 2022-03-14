@@ -33,6 +33,8 @@ jobs:
     # 发布到 GitHub Pages
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
+      with:
+        cname: github.com
       env:
         PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 访问秘钥
         PUBLISH_BRANCH: gh-pages # 推送分支
