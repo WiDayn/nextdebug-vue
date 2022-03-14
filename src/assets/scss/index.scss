@@ -103,10 +103,11 @@
 
 body{
     ::selection{
-        background: #b3d4fc;
+        background: rgb(188, 236, 252);
     }
     ::-moz-selection{
-        background: #b3d4fc;
+        // background: #b3d4fc;
+        background: rgb(188, 236, 252);
     }
     -webkit-user-select: none;   
     -moz-user-select: none;    
