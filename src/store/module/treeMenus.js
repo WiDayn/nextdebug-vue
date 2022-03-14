@@ -1,7 +1,7 @@
 const treeMenusModule = {
   namespaced: true,
   state: () => ({
-    sideBarNowSelect: 'Base',
+    sideBarNowSelect: '/Base',
   }),
   mutations: {
     SET_SIDEBARNOWSELECT(state, newSelect) {

@@ -122,9 +122,14 @@
       id="code-font"
     >
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#" class="nd-link-df">home</a></li>
-        <li class="breadcrumb-item"><a href="#" class="nd-link-df">problem list</a></li>
-        <li class="breadcrumb-item active" aria-current="page">(current)</li>
+        <li
+          class="breadcrumb-item"
+          v-for="(value, key) in this.nowSelect.split('/')"
+          :key="key"
+        ><a
+            href="#"
+            class="nd-link-df"
+          >{{value}}</a></li>
       </ol>
     </nav>
     <div class="gap">
@@ -135,14 +140,18 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 
+let urlList;
+
 export default {
   data() {
     return {
       baseurl: process.env.VUE_APP_BASE_API,
+      urlList,
     };
   },
   computed: mapState({
     userInfo: (state) => state.userModule.userInfo,
+    nowSelect: (state) => state.treeMenusModule.sideBarNowSelect,
   }),
 
   methods: mapActions('userModule', ['logout']),

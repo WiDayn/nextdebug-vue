@@ -9,7 +9,7 @@
     <li style="list-style: none;">
       <a
         class="nav-link nd-left-nav-item"
-        :class="father + treeMenus.name == nowSelect ? 'nd-left-nav-item-selected' : ''"
+        :class="father + '/' + treeMenus.name == nowSelect ? 'nd-left-nav-item-selected' : ''"
         id="v-pills-home-tab"
         data-toggle="pill"
         href="#v-pills-home"
@@ -35,7 +35,7 @@
             :key="key"
             :treeMenus="value"
             :level="nextLevel"
-            :father="father + treeMenus.name"
+            :father="father + '/' + treeMenus.name"
           >
           </sideBar>
         </template>
@@ -75,7 +75,7 @@ export default ({
     ...mapActions('treeMenusModule', { update: 'update' }),
     click(father, value) {
       this.visible = !this.visible;
-      this.$store.dispatch('treeMenusModule/update', { newSelect: father + value });
+      this.$store.dispatch('treeMenusModule/update', { newSelect: `${father}/${value}` });
     },
   },
 });
