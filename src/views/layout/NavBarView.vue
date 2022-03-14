@@ -140,13 +140,10 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 
-let urlList;
-
 export default {
   data() {
     return {
       baseurl: process.env.VUE_APP_BASE_API,
-      urlList,
     };
   },
   computed: mapState({
