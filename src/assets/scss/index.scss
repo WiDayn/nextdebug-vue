@@ -100,3 +100,23 @@
 .nav-username>a{
     cursor: default;
 }
+
+body{
+    ::selection{
+        background: #b3d4fc;
+    }
+    ::-moz-selection{
+        background: #b3d4fc;
+    }
+    -webkit-user-select: none;   
+    -moz-user-select: none;    
+    -ms-user-select: none;    
+    user-select: none;
+}
+
+.allow-copy{
+    -webkit-user-select: text;  
+    -moz-user-select: text;    
+    -ms-user-select: text;    
+    user-select: text;
+}
