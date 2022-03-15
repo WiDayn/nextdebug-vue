@@ -53,6 +53,9 @@ export default {
     father: {
       type: String,
     },
+    nowID: {
+      type: Number,
+    },
   },
   computed: mapState({
     nowSelect: (state) => state.treeMenusModule.sideBarNowSelect,
@@ -71,15 +74,13 @@ export default {
           this.queryconfig.from += 30;
           this.queryconfig.to += 30;
           this.onLoad();
-          // setTimeout(() => { // 设置延迟执行
-          // }, 1000);
         }
       }
     };
   },
   methods: {
     ...mapActions('problemModule', { sortProblem: 'sort' }),
-    ...mapActions('treeMenusModule', { update: 'update' }),
+    ...mapActions('treeMenusModule', { update: 'update', updateID: 'updateID' }),
     onLoad() {
       this.$store.dispatch('problemModule/sort', this.queryconfig).then((res) => {
         if (res.data.data == null) this.Done = true;
@@ -89,6 +90,7 @@ export default {
     click(father, value) {
       this.visible = !this.visible;
       this.$store.dispatch('treeMenusModule/update', { newSelect: `${father}/${value}` });
+      this.$store.dispatch('treeMenusModule/updateID', { newSelect: this.nowID });
     },
   },
 };
