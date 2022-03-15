@@ -32,8 +32,9 @@ jobs:
 
     # 发布到 GitHub Pages
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2
-      env:
-        PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 访问秘钥
-        PUBLISH_BRANCH: gh-pages # 推送分支
-        PUBLISH_DIR: ./dist # 部署目录
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.ACCESS_TOKEN }} # 访问秘钥
+        publish_branch: gh-pages # 推送分支
+        publish_dir: ./dist # 部署目录
+        cname: demo.debug.pink #Pages域名

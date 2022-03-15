@@ -15,7 +15,7 @@
         href="#v-pills-home"
         role="tab"
         aria-controls="v-pills-home"
-        :style="'margin-left:'+level * 5+'px'"
+        :style="'margin-left:'+level * 10+'px'"
         :aria-selected="true"
         @click="click(father, treeMenus.name)"
       >
