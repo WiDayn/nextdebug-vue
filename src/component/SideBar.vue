@@ -1,56 +1,59 @@
 <template>
-  <ul
-    class="nav flex-column nav-pills"
-    id="v-pills-tab"
-    role="tablist"
-    aria-orientation="vertical"
-    style="flex-direction: column;"
-  >
-    <li style="list-style: none;">
-      <a
-        class="nav-link nd-left-nav-item"
-        :class="father + '/' + treeMenus.name == nowSelect ? 'nd-left-nav-item-selected' : ''"
-        id="v-pills-home-tab"
-        data-toggle="pill"
-        href="#v-pills-home"
-        role="tab"
-        aria-controls="v-pills-home"
-        :style="'margin-left:'+level * 10+'px'"
-        :aria-selected="true"
-        @click="click(father, treeMenus.name)"
-      >
-        <template v-if="(treeMenus.children != null && treeMenus.children.length != 0)
+  <div class="nd-dropdown-level">
+    <ul
+      class="nav flex-column nav-pills"
+      id="v-pills-tab"
+      role="tablist"
+      aria-orientation="vertical"
+      style="flex-direction: column;"
+    >
+      <li style="list-style: none;">
+        <a
+          class="nav-link nd-left-nav-item"
+          :class="father + '/' + treeMenus.name == nowSelect ? 'nd-left-nav-item-selected' : ''"
+          id="v-pills-home-tab"
+          data-toggle="pill"
+          href="#v-pills-home"
+          role="tab"
+          aria-controls="v-pills-home"
+          :style="'margin-left:'+level * 10+'px'"
+          :aria-selected="true"
+          @click="click(father, treeMenus.name)"
+        >
+          <template v-if="(treeMenus.children != null && treeMenus.children.length != 0)
         || treeMenus.module != null">
-          <template v-if="visible">
-            {{treeMenus.name}}
-            <span class="nd-breadcrumb-dropdown">↘</span>
+            <template v-if="visible">
+              {{treeMenus.name}}
+              <span class="nd-breadcrumb-dropdown">↘</span>
+            </template>
+            <template v-else>
+              {{treeMenus.name}}
+              <span class="nd-breadcrumb-dropdown">↗</span>
+            </template>
           </template>
-          <template v-else>
-            {{treeMenus.name}}
-            <span class="nd-breadcrumb-dropdown">↗</span>
+          <p v-else>{{ treeMenus.name }}</p>
+        </a>
+        <template v-if="visible && treeMenus.children != null && treeMenus.module == null">
+          <template v-for="(value, key) in treeMenus.children">
+            <sideBar
+              :key="key"
+              :treeMenus="value"
+              :level="nextLevel"
+              :father="father + '/' + treeMenus.name"
+            >
+            </sideBar>
           </template>
         </template>
-        <p v-else>{{ treeMenus.name }}</p>
-      </a>
-      <template v-if="visible && treeMenus.children != null && treeMenus.module == null">
-        <template v-for="(value, key) in treeMenus.children">
-          <sideBar
-            :key="key"
-            :treeMenus="value"
+        <template v-if="visible && treeMenus.module != null">
+          <ProblemListSideBar
             :level="nextLevel"
             :father="father + '/' + treeMenus.name"
-          >
-          </sideBar>
+            :nowID=nowID
+          />
         </template>
-      </template>
-      <template v-if="visible && treeMenus.module != null">
-        <ProblemListSideBar
-          :level="nextLevel"
-          :father="father + '/' + treeMenus.name"
-        />
-      </template>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
@@ -77,6 +80,9 @@ export default ({
     },
     father: {
       type: String,
+    },
+    nowID: {
+      type: Number,
     },
   },
   computed: mapState({
