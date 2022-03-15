@@ -39,10 +39,11 @@ export default {
     return {
       queryconfig: {
         type: 'id',
-        form: 1,
-        to: 50,
+        from: 1,
+        to: 30,
       },
       problems: [],
+      Done: false,
     };
   },
   props: {
@@ -59,12 +60,30 @@ export default {
   mounted() {
     this.onLoad();
   },
+  created() {
+    window.onscroll = () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+
+      if (scrollTop + windowHeight >= (scrollHeight * 5) / 6) {
+        if (!this.Done) {
+          this.queryconfig.from += 30;
+          this.queryconfig.to += 30;
+          this.onLoad();
+          // setTimeout(() => { // 设置延迟执行
+          // }, 1000);
+        }
+      }
+    };
+  },
   methods: {
     ...mapActions('problemModule', { sortProblem: 'sort' }),
     ...mapActions('treeMenusModule', { update: 'update' }),
     onLoad() {
       this.$store.dispatch('problemModule/sort', this.queryconfig).then((res) => {
-        this.problems = res.data.data.problems;
+        if (res.data.data == null) this.Done = true;
+        else this.problems = this.problems.concat(res.data.data.problems);
       });
     },
     click(father, value) {
