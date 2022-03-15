@@ -31,7 +31,7 @@
         </template>
         <p v-else>{{ treeMenus.name }}</p>
       </a>
-      <template v-if="visible && treeMenus.children != null">
+      <template v-if="visible && treeMenus.children != null && treeMenus.module == null">
         <template v-for="(value, key) in treeMenus.children">
           <sideBar
             :key="key"
@@ -42,11 +42,18 @@
           </sideBar>
         </template>
       </template>
+      <template v-if="visible && treeMenus.module != null">
+        <ProblemListSideBar
+          :level="nextLevel"
+          :father="father + '/' + treeMenus.name"
+        />
+      </template>
     </li>
   </ul>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex';
+import ProblemListSideBar from './module/ProblemListSideBar.vue';
 
 export default ({
   name: 'treeMenus',
@@ -55,6 +62,9 @@ export default ({
       nextLevel: this.level + 1,
       visible: false,
     };
+  },
+  components: {
+    ProblemListSideBar,
   },
   props: {
     treeMenus: {

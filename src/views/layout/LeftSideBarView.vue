@@ -25,6 +25,12 @@ const treeMenusData = {
       ],
     },
     {
+      name: 'Problem',
+      module: 'ProblemList',
+      children: [
+      ],
+    },
+    {
       name: 'Profile',
       children: [
         {
