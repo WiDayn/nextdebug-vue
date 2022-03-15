@@ -19,7 +19,7 @@
           href="#v-pills-home"
           role="tab"
           aria-controls="v-pills-home"
-          :style="'margin-left:'+level * 5+'px'"
+          :style="'margin-left:'+ (level+1) * 5+'px'"
           :aria-selected="true"
           @click="click(father, value.original_id)"
         >
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'ProblemListSideBar',
@@ -53,6 +53,9 @@ export default {
       type: String,
     },
   },
+  computed: mapState({
+    nowSelect: (state) => state.treeMenusModule.sideBarNowSelect,
+  }),
   mounted() {
     this.onLoad();
   },
