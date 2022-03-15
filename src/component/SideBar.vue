@@ -19,7 +19,8 @@
         :aria-selected="true"
         @click="click(father, treeMenus.name)"
       >
-        <template v-if="treeMenus.children != null && treeMenus.children.length != 0">
+        <template v-if="(treeMenus.children != null && treeMenus.children.length != 0)
+        || treeMenus.module != null">
           <template v-if="visible">
             {{treeMenus.name}}
             <span class="nd-breadcrumb-dropdown">↘</span>
