@@ -34,7 +34,7 @@
         <p v-else>{{ treeMenus.name }}</p>
       </a>
       <template v-if="visible && treeMenus.children != null && treeMenus.module == null">
-        <div>
+        <div class="nd-dropdown-wrap">
           <template v-for="(value, key) in treeMenus.children">
             <sideBar
               :key="key"
