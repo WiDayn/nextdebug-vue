@@ -11,7 +11,7 @@ const treeMenusModule = {
     },
     SET_SIDEBARNOWSELECTID(state, newSelect) {
       // 变更状态
-      state.sideBarNowSelect = newSelect;
+      state.sideBarNowSelectID = newSelect;
     },
   },
   actions: {

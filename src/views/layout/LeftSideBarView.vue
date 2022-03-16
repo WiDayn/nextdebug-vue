@@ -9,6 +9,7 @@
         :treeMenus="treeMenusData"
         :level="0"
         :father="''"
+        :nowID="0"
       ></sideBar>
     </div>
   </div>

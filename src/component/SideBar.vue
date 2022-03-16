@@ -9,7 +9,8 @@
     <li style="list-style: none;">
       <a
         class="nav-link nd-left-nav-item"
-        :class="father + '/' + treeMenus.name == nowSelect ? 'nd-left-nav-item-selected' : ''"
+        :class="father + '/' + treeMenus.name == nowSelect
+        && nowSelectID == nowID ? 'nd-left-nav-item-selected' : ''"
         id="v-pills-home-tab"
         data-toggle="pill"
         href="#v-pills-home"
@@ -17,7 +18,7 @@
         aria-controls="v-pills-home"
         :style="'margin-left:'+level * 10+'px'"
         :aria-selected="true"
-        @click="click(father, treeMenus.name, key)"
+        @click="click(father, treeMenus.name, nowID)"
       >
         <template v-if="(treeMenus.children != null && treeMenus.children.length != 0)
         || treeMenus.module != null">
@@ -40,6 +41,7 @@
               :treeMenus="value"
               :level="nextLevel"
               :father="father + '/' + treeMenus.name"
+              :nowID="nowID + key"
             >
             </sideBar>
           </template>
@@ -49,7 +51,7 @@
         <ProblemListSideBar
           :level="nextLevel"
           :father="father + '/' + treeMenus.name"
-          :nowID=nowID
+          :nowID="nowID + 10000"
         />
       </template>
     </li>
@@ -87,6 +89,7 @@ export default ({
   },
   computed: mapState({
     nowSelect: (state) => state.treeMenusModule.sideBarNowSelect,
+    nowSelectID: (state) => state.treeMenusModule.sideBarNowSelectID,
   }),
   mounted() {
   },
