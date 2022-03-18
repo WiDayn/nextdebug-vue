@@ -8,7 +8,7 @@ const problemRoutes = [
     component: () => import('@/views/problem/ProblemCreateView.vue'),
   },
   {
-    path: '/problem/:id',
+    path: '/problem/:originalID',
     name: 'problem_detail',
     component: () => import('@/views/problem/ProblemDetailView.vue'),
   },

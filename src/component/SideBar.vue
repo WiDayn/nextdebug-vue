@@ -13,7 +13,7 @@
         && nowSelectID == nowID ? 'nd-left-nav-item-selected' : ''"
         id="v-pills-home-tab"
         data-toggle="pill"
-        href="#v-pills-home"
+        href="javascript:void(0);"
         role="tab"
         aria-controls="v-pills-home"
         :style="'margin-left:'+level * 10+'px'"

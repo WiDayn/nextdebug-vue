@@ -96,9 +96,10 @@ export default {
     return {
       selectvalue: 0,
       problem: {},
-      testSet: {},
+      testSet: [],
       queryConfig: {
         id: 0,
+        originalID: '',
       },
       fields: [
         { key: 'ID', label: 'ID', thStyle: 'width: 10%' },
@@ -126,12 +127,17 @@ export default {
       });
     },
     onLoad() {
-      this.queryConfig.id = parseInt(this.$route.params.id, 10);
+      this.queryConfig.originalID = this.$route.params.originalID;
       this.$store.dispatch('problemModule/get', this.queryConfig).then((res) => {
         this.problem = res.data.data.problem;
-      });
-      this.$store.dispatch('testSetModule/sort', this.queryConfig).then((resp) => {
-        this.testSet = resp.data.data.test_set;
+        this.queryConfig.id = this.problem.ID;
+        this.$store.dispatch('testSetModule/sort', this.queryConfig).then((resp) => {
+          const testSet = [];
+          Object.keys(resp.data.data.test_set).forEach((key) => {
+            testSet.push(resp.data.data.test_set[key]);
+          });
+          this.testSet = testSet;
+        });
       });
     },
     makeToast(title, err, variant = null, append = false) {
@@ -142,6 +148,10 @@ export default {
         appendToast: append,
       });
     },
+  },
+  watch: {
+    // 如果路由发生变化，再次执行该方法
+    $route: 'onLoad',
   },
 };
 </script>

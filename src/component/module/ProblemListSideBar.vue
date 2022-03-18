@@ -17,7 +17,7 @@
           && nowSelectID == nowID + key ? 'nd-left-nav-item-selected' : ''"
           :id="key"
           data-toggle="pill"
-          href="#v-pills-home"
+          href="javascript:void(0);"
           role="tab"
           aria-controls="v-pills-home"
           :style="'margin-left:'+ (level+1) * 5+'px'"
@@ -89,10 +89,11 @@ export default {
         else this.problems = this.problems.concat(res.data.data.problems);
       });
     },
-    click(father, value, nowID) {
+    click(father, originalID, nowID) {
       this.visible = !this.visible;
-      this.$store.dispatch('treeMenusModule/update', { newSelect: `${father}/${value}` });
+      this.$store.dispatch('treeMenusModule/update', { newSelect: `${father}/${originalID}` });
       this.$store.dispatch('treeMenusModule/updateID', { newSelect: nowID });
+      this.$router.push({ name: 'problem_detail', params: { originalID } });
     },
   },
 };

@@ -12,9 +12,9 @@ const problemModule = {
         });
       });
     },
-    get(context, { id }) {
+    get(context, { originalID }) {
       return new Promise((resolve, reject) => {
-        problemService.get({ id }).then((res) => {
+        problemService.get({ originalID }).then((res) => {
           resolve(res);
         }).catch((err) => {
           reject(err);

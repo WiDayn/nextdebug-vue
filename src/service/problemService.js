@@ -2,7 +2,7 @@ import request from '@/utils/request';
 
 const sort = ({ type, from, to }) => request.post('list/sort_problem', { type, from, to });
 
-const get = ({ id }) => request.get(`problems/${id}`, {});
+const get = ({ originalID }) => request.get(`problems/${originalID}`, {});
 
 const create = ({
   name, from, problemLink, description,
