@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <p>Profile</p>
-    <hr>
+  <div
+    @click="$router.push({ name: 'profile' })"
+    @keypress="$router.push({ name: 'profile' })"
+  >
     <b-avatar
       variant="info"
       v-bind:src="
