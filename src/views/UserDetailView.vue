@@ -26,7 +26,7 @@ export default {
     return {
       baseurl: process.env.VUE_APP_BASE_API,
       user: {
-        ID: 0,
+        Name: '',
       },
     };
   },
@@ -36,7 +36,7 @@ export default {
   methods: {
     ...mapActions('userModule', { getUserDetail: 'userDetail' }),
     onLoad() {
-      this.user.ID = parseInt(this.$route.params.id, 10);
+      this.user.Name = this.$route.params.Name;
       this.$store.dispatch('userModule/userDetail', this.user).then((res) => {
         this.user = res.data.data.user;
       }).catch((err) => {

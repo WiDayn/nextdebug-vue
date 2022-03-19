@@ -74,9 +74,9 @@ const userModule = {
         });
       });
     },
-    userDetail(context, { ID }) {
+    userDetail(context, { Name }) {
       return new Promise((resolve, reject) => {
-        userService.userDetail({ ID }).then((res) => {
+        userService.userDetail({ Name }).then((res) => {
           resolve(res);
         }).catch((err) => {
           reject(err);

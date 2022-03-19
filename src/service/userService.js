@@ -6,7 +6,7 @@ const login = ({ name, password }) => request.post('auth/login', { name, passwor
 
 const info = () => request.get('auth/info');
 
-const userDetail = ({ ID }) => request.post('auth/userDetail', { ID });
+const userDetail = ({ Name }) => request.post('auth/userDetail', { Name });
 
 export default {
   register,
