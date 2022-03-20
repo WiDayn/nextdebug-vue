@@ -34,6 +34,7 @@ export default {
     title: 'This is the test',
     meta: [
       { charset: 'utf-8' },
+      { name: 'baidu', content: 'q2321wqe' },
     ],
   },
   data() {

@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Meta from 'vue-meta';
 import Vuelidate from 'vuelidate';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import axios from 'axios';
@@ -23,6 +24,7 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
+Vue.use(Meta);
 
 new Vue({
   router,
