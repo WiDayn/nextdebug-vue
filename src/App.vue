@@ -30,6 +30,12 @@ export default {
   components: {
     NavBar, LeftSideBar, RightSideBar, Footer,
   },
+  metaInfo: {
+    title: 'This is the test',
+    meta: [
+      { charset: 'utf-8' },
+    ],
+  },
   data() {
     return {};
   },
