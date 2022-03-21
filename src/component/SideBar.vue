@@ -130,6 +130,18 @@ export default ({
       console.log(vals);
     },
   },
+  watch: {
+    length() {
+      if (this.treeMenus.children.length !== 0) {
+        this.length = this.treeMenus.children.length;
+      }
+      if (this.is_show) {
+        this.$refs.box.style.height = `${this.length * 32 + 32}px`;
+      } else {
+        this.$refs.box.style.height = '32px';
+      }
+    },
+  },
 });
 </script>
 
