@@ -53,6 +53,7 @@
           :level="nextLevel"
           :father="father + '/' + treeMenus.name"
           :nowID="nowID + 10000"
+          @ChangeLength="ChangeLength"
         />
       </template>
     </li>
@@ -68,8 +69,9 @@ export default ({
     return {
       nextLevel: this.level + 1,
       visible: false,
-      is_show: true,
+      is_show: false,
       height: '',
+      length: 0,
     };
   },
   components: {
@@ -100,12 +102,15 @@ export default ({
   methods: {
     ...mapActions('treeMenusModule', { update: 'update', updateID: 'updateID' }),
     click(father, value) {
-      if (this.is_show) {
-        this.$refs.box.style.height = '0';
-      } else {
-        this.$refs.box.style.height = this.height;
+      if (this.treeMenus.children.length !== 0) {
+        this.length = this.treeMenus.children.length;
       }
       this.is_show = !this.is_show;
+      if (this.is_show) {
+        this.$refs.box.style.height = `${this.length * 32 + 32}px`;
+      } else {
+        this.$refs.box.style.height = '32px';
+      }
       this.visible = !this.visible;
       this.$store.dispatch('treeMenusModule/update', { newSelect: `${father}/${value}` });
       this.$store.dispatch('treeMenusModule/updateID', { newSelect: this.nowID });
@@ -115,11 +120,14 @@ export default ({
       // 做法： 1：获取这个元素的高度
       //        2:吧获取的高度赋值给这个元素，这样这个元素就是高度固定的了。nextTick用于dom刷新后执行
       this.$nextTick(function () {
-        const height = 100;
-        console.log(height);
+        const height = this.$refs.box.offsetHeight;
         this.$refs.box.style.height = `${height}px`;
         this.height = `${height}px`;
       });
+    },
+    ChangeLength(vals) {
+      this.length = vals;
+      console.log(vals);
     },
   },
 });

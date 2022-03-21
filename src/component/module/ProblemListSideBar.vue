@@ -87,6 +87,7 @@ export default {
       this.$store.dispatch('problemModule/sort', this.queryconfig).then((res) => {
         if (res.data.data == null) this.Done = true;
         else this.problems = this.problems.concat(res.data.data.problems);
+        this.$emit('ChangeLength', this.problems.length);
       });
     },
     click(father, originalID, nowID) {
